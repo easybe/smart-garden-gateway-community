@@ -1,0 +1,5 @@
+header:
+  version: 14
+  includes:
+    - base.yml
+machine: gardena-sg-at91sam

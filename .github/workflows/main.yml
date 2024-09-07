@@ -1,0 +1,18 @@
+on: pull_request
+
+name: CI
+
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Prepare
+        run: |
+          set -e
+          sudo apt update && sudo apt install chrpath diffstat
+          pip install kas
+
+      - name: Build
+        run: ./release.sh

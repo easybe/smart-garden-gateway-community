@@ -1,0 +1,58 @@
+header:
+  version: 14
+distro: gardena
+local_conf_header:
+  Use OPKG packages: >
+    PACKAGE_CLASSES ?= "package_ipk"
+  Enable collection of build statistics, reduce shared library file size: >
+    USER_CLASSES ?= "buildstats"
+  Reduce image size by not installing recommended packages: >
+    NO_RECOMMENDATIONS = "1"
+  By default disable interactive patch resolution, cause task to fail instead: >
+    PATCHRESOLVE = "noop"
+build_system: oe
+repos:
+  .:
+  bitbake:
+    url: https://github.com/husqvarnagroup/smart-garden-gateway-yocto-bitbake.git
+    path: yocto/bitbake
+    tag: release/linux-system-8.8.1
+    layers:
+      .: excluded
+  openembedded-core:
+    url: https://github.com/husqvarnagroup/smart-garden-gateway-yocto-openembedded-core.git
+    path: yocto/openembedded-core
+    tag: release/linux-system-8.8.1
+    layers:
+      meta:
+  meta-openembedded:
+    url: https://github.com/husqvarnagroup/smart-garden-gateway-yocto-meta-openembedded.git
+    path: yocto/meta-openembedded
+    tag: release/linux-system-8.8.1
+    layers:
+      meta-oe:
+      meta-python:
+      meta-networking:
+  meta-distribution:
+    url: https://github.com/husqvarnagroup/smart-garden-gateway-yocto-meta-distribution.git
+    path: yocto/meta-distribution
+    tag: release/linux-system-8.8.1
+  meta-gardena:
+    url: https://github.com/husqvarnagroup/smart-garden-gateway-yocto-meta-gardena.git
+    path: yocto/meta-gardena
+    tag: release/linux-system-8.8.1
+  meta-swupdate:
+    url: https://github.com/husqvarnagroup/smart-garden-gateway-yocto-meta-swupdate.git
+    path: yocto/meta-swupdate
+    tag: release/linux-system-8.8.1
+  meta-aws:
+    url: https://github.com/husqvarnagroup/smart-garden-gateway-yocto-meta-aws.git
+    path: yocto/meta-aws
+    tag: release/linux-system-8.8.1
+  meta-readonly-rootfs-overlay:
+    url: https://github.com/husqvarnagroup/smart-garden-gateway-yocto-meta-readonly-rootfs-overlay.git
+    path: yocto/meta-readonly-rootfs-overlay
+    tag: release/linux-system-8.8.1
+target:
+  - sg-mqtt-client
+  - package-index
