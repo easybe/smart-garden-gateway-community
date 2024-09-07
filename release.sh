@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-export SSTATE_DIR=~/.cache/yocto/sstate-cache
+#export SSTATE_DIR=~/.cache/yocto/sstate-cache
 
 rm -rf build
 
